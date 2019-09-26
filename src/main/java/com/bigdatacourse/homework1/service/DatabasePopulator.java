@@ -33,6 +33,9 @@ public class DatabasePopulator {
     @Transactional
     public void populate() throws IOException {
 
+        recreateDatabase();
+
+
         String conferencesAsString = getResourceAsString("confereces.txt");
         String[] conferences = conferencesAsString.split("\r\n");
 
@@ -80,6 +83,13 @@ public class DatabasePopulator {
             System.out.println("exception in main loop");
         }
 
+    }
+
+    private void recreateDatabase() throws IOException {
+        session = entityManager.unwrap(Session.class);
+        String schemaExecute = "schema.sql";
+        String resourceAsString = getResourceAsString(schemaExecute);
+        session.createNativeQuery(resourceAsString).executeUpdate();
     }
 
     @Transactional
