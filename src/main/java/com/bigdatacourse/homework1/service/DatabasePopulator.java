@@ -45,7 +45,7 @@ public class DatabasePopulator {
         String[] names = namesAsString.split("\r\n");
 
         String papersAsString = getResourceAsString("papers.txt");
-        String[] papers = namesAsString.split("\r\n");
+        String[] papers = papersAsString.split("\r\n");
 
 
         try {
@@ -125,8 +125,7 @@ public class DatabasePopulator {
     void populateConference(String conferenceName) {
         session = entityManager.unwrap(Session.class);
         Conference conference = new Conference();
-        conference.setRanking(new BigInteger(String.valueOf(new Random().nextInt(50))));
-        conference.setRanking(new BigInteger("1"));
+        conference.setRanking(new BigInteger(String.valueOf(new Random().nextInt(10))));
         conference.setName(conferenceName);
         session.save(conference);
     }
@@ -136,7 +135,7 @@ public class DatabasePopulator {
         session = entityManager.unwrap(Session.class);
         Paper paper = new Paper();
         paper.setTitle(paperName);
-        paper.setExtract(RandomString.make(100));
+        paper.setAbstract_(RandomString.make(100));
         session.save(paper);
     }
 

@@ -11,7 +11,7 @@ import javax.persistence.Id;
 public class Paper {
     private Integer paperid;
     private String title;
-    private String extract;
+    private String abstract_;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,13 +35,13 @@ public class Paper {
     }
 
     @Basic
-    @Column(name = "extract")
-    public String getExtract() {
-        return extract;
+    @Column(name = "abstract_")
+    public String getabstract_() {
+        return abstract_;
     }
 
-    public void setExtract(String extract) {
-        this.extract = extract;
+    public void setAbstract_(String abstract_) {
+        this.abstract_ = abstract_;
     }
 
     @Override
@@ -53,7 +53,7 @@ public class Paper {
 
         if (paperid != null ? !paperid.equals(paper.paperid) : paper.paperid != null) return false;
         if (title != null ? !title.equals(paper.title) : paper.title != null) return false;
-        if (extract != null ? !extract.equals(paper.extract) : paper.extract != null) return false;
+        if (abstract_ != null ? !abstract_.equals(paper.abstract_) : paper.abstract_ != null) return false;
 
         return true;
     }
@@ -62,7 +62,7 @@ public class Paper {
     public int hashCode() {
         int result = paperid != null ? paperid.hashCode() : 0;
         result = 31 * result + (title != null ? title.hashCode() : 0);
-        result = 31 * result + (extract != null ? extract.hashCode() : 0);
+        result = 31 * result + (abstract_ != null ? abstract_.hashCode() : 0);
         return result;
     }
 }

@@ -15,7 +15,7 @@ drop sequence if exists paper_paperid_seq;
  create table paper(
  	paperID SERIAL PRIMARY KEY,
  	title varchar,
- 	extract varchar
+ 	abstract_ varchar
  );
 
  create table author(
