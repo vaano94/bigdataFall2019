@@ -10,6 +10,7 @@ drop sequence if exists author_authorid_seq;
 drop sequence if exists conference_config_seq;
 drop sequence if exists paper_paperid_seq;
 
+drop view if exists publishesin;
 
 
  create table paper(
@@ -49,6 +50,8 @@ drop sequence if exists paper_paperid_seq;
  	FOREIGN KEY (confID) REFERENCES conference(confID) ON DELETE CASCADE ON UPDATE CASCADE
  );
 
+
+
  create table cites(
  	paperIDfrom integer,
  	paperIDto integer,
@@ -56,3 +59,10 @@ drop sequence if exists paper_paperid_seq;
  	FOREIGN KEY (paperIDfrom) REFERENCES paper(paperID) ON DELETE RESTRICT ON UPDATE CASCADE,
  	FOREIGN KEY (paperIDto) REFERENCES paper(paperID) ON DELETE CASCADE ON UPDATE CASCADE
  );
+
+-- FOREIGN KEY (paperIDto) REFERENCES paper(paperID) ON DELETE SET NULL ON UPDATE CASCADE
+-- we want to ensure that by deleting refenced paperid (paperIDto) we also want to delete corresponding entry in cites
+
+-- FOREIGN KEY (paperIDfrom) REFERENCES paper(paperID) ON DELETE RESTRICT ON UPDATE CASCADE
+-- any erase of cited paper is prohibited because it could be that one paper was participated in creation of another
+-- so for the paper which cites another ones, its important to have them

@@ -37,15 +37,15 @@ public class DatabasePopulator {
 
 
         String conferencesAsString = getResourceAsString("confereces.txt");
-        String[] conferences = conferencesAsString.split("\r\n");
+        String[] conferences = conferencesAsString.split("\n");
 
         String publication = getResourceAsString("publication.txt");
 
         String namesAsString = getResourceAsString("names.txt");
-        String[] names = namesAsString.split("\r\n");
+        String[] names = namesAsString.split("\n");
 
         String papersAsString = getResourceAsString("papers.txt");
-        String[] papers = papersAsString.split("\r\n");
+        String[] papers = papersAsString.split("\n");
 
 
         try {
